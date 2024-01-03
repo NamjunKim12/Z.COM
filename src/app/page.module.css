@@ -1,0 +1,13 @@
+.left {
+  width: 50%;
+  float: left;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.right {
+  width: 50%;
+  float: right;
+  padding: 10px;
+  box-sizing: border-box;
+}
