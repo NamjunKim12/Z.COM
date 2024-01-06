@@ -5,7 +5,8 @@ export default async function HomeLayout({
   }) {
     return (
         <div>
-          <h1>홈레이아웃</h1>
+          홈페이지
+          홈 레이아웃
         {children}
         </div>
     )
