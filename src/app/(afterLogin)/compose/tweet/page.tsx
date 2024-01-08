@@ -1,7 +1,7 @@
-export default function Home() {
+import Home from "@/app/(afterLogin)/home/page";
+
+export default function Page() {
   return (
-    <>
-      트윗 작성 페이지
-    </>
+    <Home />
   )
 }
