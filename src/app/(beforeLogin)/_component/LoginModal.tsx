@@ -1,24 +1,48 @@
 "use client";
 
 import style from '@/app/(beforeLogin)/_component/login.module.css';
-import {useState} from "react";
+import {ChangeEventHandler, FormEventHandler, useState} from "react";
+import {redirect, useRouter} from "next/navigation";
+import {signIn} from "next-auth/react";
 
 export default function LoginModal() {
-  const [id, setId] = useState();
-  const [password, setPassword] = useState();
-  const [message, setMessage] = useState();
-  const onSubmit = () => {};
-  const onClickClose = () => {};
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const router = useRouter();
 
-  const onChangeId = () => {};
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    setMessage('');
+    try {
+      await signIn("credentials", {
+        username: id,
+        password,
+        redirect: false,
+      })
+      router.replace('/home');
+    } catch (err) {
+      console.error(err);
+      setMessage('아이디와 비밀번호가 일치하지 않습니다.');
+    }
+  };
+  const onClickClose = () => {
+    router.back();
+  };
 
-  const onChangePassword = () => {};
+  const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setId(e.target.value);
+  };
+
+  const onChangePassword: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setPassword(e.target.value);
+  };
 
   return (
     <div className={style.modalBackground}>
       <div className={style.modal}>
         <div className={style.modalHeader}>
-          <button className={style.closeButton} onClick={onClickClose} title='closeButton'>
+          <button className={style.closeButton} onClick={onClickClose}>
             <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
                  className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
               <g>
@@ -42,10 +66,9 @@ export default function LoginModal() {
           </div>
           <div className={style.message}>{message}</div>
           <div className={style.modalFooter}>
-            <button className={style.actionButton} disabled={!id && !password} >로그인하기</button>
+            <button className={style.actionButton} disabled={!id && !password}>로그인하기</button>
           </div>
         </form>
       </div>
     </div>
-  );
-}
+  )};
