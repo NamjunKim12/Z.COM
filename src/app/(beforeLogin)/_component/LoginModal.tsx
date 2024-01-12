@@ -71,4 +71,5 @@ export default function LoginModal() {
         </form>
       </div>
     </div>
-  )};
+  );
+}

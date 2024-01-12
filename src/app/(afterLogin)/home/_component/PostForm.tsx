@@ -7,7 +7,7 @@ export default function PostForm() {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
   const me = {
-    id: 'wrasf175',
+    id: 'zerohch0',
     image: '/5Udwvqim.jpg'
   };
 

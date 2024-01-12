@@ -2,7 +2,6 @@
 
 import style from './modal.module.css';
 import {useRef, useState} from "react";
-
 export default function TweetModal() {
   const [content, setContent] = useState();
   const imageRef = useRef<HTMLInputElement>(null);
@@ -12,14 +11,14 @@ export default function TweetModal() {
   const onChangeContent = () => {}
 
   const me = {
-    id: 'wrasf175',
+    id: 'zerohch0',
     image: '/5Udwvqim.jpg'
   };
 
   return (
     <div className={style.modalBackground}>
       <div className={style.modal}>
-        <button className={style.closeButton} onClick={onClickClose} title='btn'>
+        <button className={style.closeButton} onClick={onClickClose}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
                className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
             <g>
@@ -47,7 +46,7 @@ export default function TweetModal() {
             <div className={style.footerButtons}>
               <div className={style.footerButtonLeft}>
                 <input type="file" name="imageFiles" multiple hidden ref={imageRef} />
-                <button className={style.uploadButton} type="button" onClick={onClickButton} title='btn'>
+                <button className={style.uploadButton} type="button" onClick={onClickButton}>
                   <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
                     <g>
                       <path

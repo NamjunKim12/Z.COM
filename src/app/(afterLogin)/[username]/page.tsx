@@ -3,8 +3,8 @@ import Post from "@/app/(afterLogin)/_component/Post";
 import BackButton from "@/app/(afterLogin)/_component/BackButton";
 export default function Profile() {
   const user = {
-    id: 'wrasf175',
-    nickname: '김남준',
+    id: 'zerohch0',
+    nickname: '제로초',
     image: '/5Udwvqim.jpg'
   };
 

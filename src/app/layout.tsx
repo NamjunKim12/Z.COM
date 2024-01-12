@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { MSWComponent } from './_component/MSWComponent'
+import {MSWComponent} from "@/app/_component/MSWComponent";
+import AuthSession from "@/app/_component/AuthSession";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,19 +12,18 @@ export const metadata: Metadata = {
 }
 
 type Props = {
-  children: React.ReactNode;
+  children: React.ReactNode,
 };
-
 export default function RootLayout({
   children,
-}: Props ) {
+}: Props) {
   return (
-    // 루트 레이아웃
-      
     <html lang="en">
       <body className={inter.className}>
-        <MSWComponent />
+      <MSWComponent />
+      <AuthSession>
         {children}
+      </AuthSession>
       </body>
     </html>
   )
