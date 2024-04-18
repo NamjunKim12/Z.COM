@@ -9,14 +9,14 @@ import TabDecider from './_component/TabDecider';
 
 export default async function Home() {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery({queryKey: ['posts','recommends'], queryFn: getPostRecommends });
+  await queryClient.prefetchQuery({ queryKey: ['posts', 'recommends'], queryFn: getPostRecommends });
   const dehydrateState = dehydrate(queryClient);
 
   return (
     <main className={style.main}>
       <HydrationBoundary state={dehydrateState}>
         <TabProvider>
-          <Tab/>
+          <Tab />
           <PostForm />
           <TabDecider />
           <PostRecommends />

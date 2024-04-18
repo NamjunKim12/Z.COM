@@ -1,26 +1,28 @@
 "use client";
 
+import { useSession } from 'next-auth/react';
 import style from './modal.module.css';
-import {useRef, useState} from "react";
+import { useRef, useState } from "react";
+import { useRouter } from 'next/navigation';
 export default function TweetModal() {
+  const { data: me } = useSession();
+  const router = useRouter();
+
   const [content, setContent] = useState();
   const imageRef = useRef<HTMLInputElement>(null);
-  const onSubmit = () => {};
-  const onClickClose = () => {}
-  const onClickButton = () => {}
-  const onChangeContent = () => {}
-
-  const me = {
-    id: 'zerohch0',
-    image: '/5Udwvqim.jpg'
-  };
+  const onSubmit = () => { };
+  const onClickClose = () => {
+    router.back();
+  }
+  const onClickButton = () => { }
+  const onChangeContent = () => { }
 
   return (
     <div className={style.modalBackground}>
       <div className={style.modal}>
         <button className={style.closeButton} onClick={onClickClose}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true"
-               className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
+            className="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03">
             <g>
               <path
                 d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"></path>
@@ -31,18 +33,18 @@ export default function TweetModal() {
           <div className={style.modalBody}>
             <div className={style.postUserSection}>
               <div className={style.postUserImage}>
-                <img src={me.image} alt={me.id} />
+                <img src={me?.user?.image as string} alt={me?.user?.id as string} />
               </div>
             </div>
             <div className={style.inputDiv}>
               <textarea className={style.input} placeholder="무슨 일이 일어나고 있나요?"
-                     value={content}
-                     onChange={onChangeContent}
+                value={content}
+                onChange={onChangeContent}
               />
             </div>
           </div>
           <div className={style.modalFooter}>
-            <div className={style.modalDivider}/>
+            <div className={style.modalDivider} />
             <div className={style.footerButtons}>
               <div className={style.footerButtonLeft}>
                 <input type="file" name="imageFiles" multiple hidden ref={imageRef} />

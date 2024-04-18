@@ -1,14 +1,14 @@
 "use client";
 
-import React, {useState} from "react";
-import {QueryClientProvider, QueryClient} from "@tanstack/react-query";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
+import React, { useState } from "react";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 type Props = {
   children: React.ReactNode;
 };
 
-function RQProvider({children}: Props) {
+function RQProvider({ children }: Props) {
   const [client] = useState(
     new QueryClient({
       defaultOptions: {  // react-query 전역 설정
@@ -25,7 +25,7 @@ function RQProvider({children}: Props) {
   return (
     <QueryClientProvider client={client}>
       {children}
-      <ReactQueryDevtools initialIsOpen={process.env.NEXT_PUBLIC_MODE === 'local' }/>
+      <ReactQueryDevtools initialIsOpen={process.env.NEXT_PUBLIC_MODE === 'local'} />
     </QueryClientProvider>
   );
 }
